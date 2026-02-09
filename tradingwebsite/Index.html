@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lexzy World - Gift Card & Crypto Trading</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Open Sans', sans-serif; background:#f7f9fc; color:#2c3e50; }
+
+/* HEADER */
+header {
+    background:#2C3E50; color:#fff; padding:20px 30px;
+    display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100;
+}
+header .logo { font-family:'Montserrat',sans-serif; font-size:28px; font-weight:700; }
+header nav a { color:#fff; margin-left:20px; text-decoration:none; font-weight:600; }
+header nav a:hover { color:#F1C40F; }
+
+/* HERO */
+.hero { text-align:center; padding:70px 15px; background:#ECF0F1; }
+.hero h1 { font-family:'Montserrat',sans-serif; font-size:46px; margin-bottom:12px; }
+.hero p { font-size:20px; margin-bottom:20px; }
+.hero button { background:#F1C40F; padding:14px 28px; border:none; border-radius:8px; font-weight:700; cursor:pointer; transition:.3s; }
+.hero button:hover { transform:scale(1.05); }
+
+/* SECTIONS */
+section { padding:50px 15px; max-width:1400px; margin:auto; }
+section h2 { text-align:center; font-family:'Montserrat',sans-serif; font-size:36px; margin-bottom:30px; }
+
+/* CARDS GRID */
+.cards-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+.card {
+    background:#fff; border-radius:15px; padding:18px;
+    text-align:center; box-shadow:0px 4px 14px rgba(0,0,0,0.1); transition:.3s;
+}
+.card img { width:70px; margin-bottom:12px; }
+.card h3 { font-size:20px; margin-bottom:8px; }
+.card p { font-size:16px; margin-bottom:6px; font-weight:600; }
+.card button {
+    background:#2C3E50; color:#fff; padding:8px 16px; border:none; border-radius:6px; cursor:pointer; font-weight:600; transition:.3s;
+}
+.card:hover { transform:translateY(-7px); }
+.card button:hover { background:#F1C40F; color:#000; }
+
+/* FORMS */
+form { background:#fff; padding:25px; border-radius:15px; box-shadow:0px 4px 14px rgba(0,0,0,0.1); max-width:700px; margin:auto; }
+form h3 { text-align:center; margin-bottom:20px; font-size:28px; }
+form label { display:block; margin-bottom:6px; font-weight:600; }
+form input, form select, form textarea { width:100%; padding:10px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc; }
+form button { background:#2C3E50; color:#fff; padding:10px 20px; border:none; border-radius:6px; cursor:pointer; font-weight:600; transition:.3s; width:100%; font-size:16px; }
+form button:hover { background:#F1C40F; color:#000; }
+
+/* WHATSAPP BUTTON */
+#whatsapp-btn {
+    position:fixed; bottom:18px; right:18px;
+    background:#25D366; color:#fff; padding:14px 18px;
+    border-radius:50px; font-size:20px; font-weight:700; display:flex; align-items:center; gap:10px; text-decoration:none; z-index:100;
+}
+#whatsapp-btn img { width:26px; }
+
+/* FOOTER */
+footer { background:#34495e; text-align:center; padding:24px; color:#fff; margin-top:40px; }
+footer a { color:#F1C40F; text-decoration:none; font-weight:600; margin:0 6px; }
+
+@media(max-width:768px){
+    header { flex-direction:column; }
+    header nav { margin-top:8px; }
+    .hero h1 { font-size:32px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Lexzy World</div>
+    <nav>
+        <a href="#hero">Home</a>
+        <a href="#gift-cards">Cards</a>
+        <a href="#crypto-cards">Crypto</a>
+        <a href="#trade-section">Trade</a>
+        <a href="#withdraw-section">Withdraw</a>
+        <a href="#footer">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="hero">
+    <h1>Trade Gift Cards & Cryptocurrencies Worldwide</h1>
+    <p>Best exchange rates in USD & Nigerian Naira (₦)</p>
+    <button>Start Trading Now</button>
+</section>
+
+<!-- Top 20 Gift Cards -->
+<section id="gift-cards">
+    <h2>Top 20 Gift Cards & Rates</h2>
+    <div class="cards-grid" id="cards-container"></div>
+</section>
+
+<!-- Crypto -->
+<section id="crypto-cards">
+    <h2>Cryptocurrencies & Payment Methods</h2>
+    <div class="cards-grid" id="crypto-container"></div>
+</section>
+
+<!-- Trade Section -->
+<section id="trade-section">
+    <h2>Trade Your Card / Crypto</h2>
+    <form id="trade-form">
+        <h3>Trade Form</h3>
+        <label for="trade-type">Select Type:</label>
+        <select id="trade-type" required>
+            <option value="">--Select--</option>
+            <option value="giftcard">Gift Card</option>
+            <option value="crypto">Crypto / Payment</option>
+        </select>
+
+        <label for="card-name">Card / Crypto Name:</label>
+        <input type="text" id="card-name" placeholder="e.g. Amazon, Bitcoin" required>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Amount in USD" required>
+
+        <label for="contact">Email or Phone:</label>
+        <input type="text" id="contact" placeholder="Your contact info" required>
+
+        <label for="details">Additional Details / Code:</label>
+        <textarea id="details" placeholder="Paste card code or details"></textarea>
+
+        <button type="submit">Submit Trade</button>
+    </form>
+</section>
+
+<!-- Withdraw Section -->
+<section id="withdraw-section">
+    <h2>Withdraw Funds</h2>
+    <form id="withdraw-form">
+        <h3>Withdraw Form</h3>
+        <label for="withdraw-method">Select Method:</label>
+        <select id="withdraw-method" required>
+            <option value="">--Select--</option>
+            <option value="bank">Bank Transfer</option>
+            <option value="paypal">PayPal</option>
+            <option value="crypto">Crypto</option>
+        </select>
+
+        <label for="withdraw-amount">Amount (USD / NGN):</label>
+        <input type="number" id="withdraw-amount" placeholder="Enter amount" required>
+
+        <label for="withdraw-contact">Account / Wallet Info:</label>
+        <input type="text" id="withdraw-contact" placeholder="Bank account, PayPal, or wallet address" required>
+
+        <button type="submit">Request Withdrawal</button>
+    </form>
+</section>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/2349071809938" target="_blank" id="whatsapp-btn">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> 09071809938
+</a>
+
+<footer id="footer">
+    &copy; 2026 Lexzy World · All Rights Reserved
+    <br>
+    <a href="#">Facebook</a> · <a href="#">Twitter</a> · <a href="#">Instagram</a>
+</footer>
+
+<script>
+// NGN rate sample
+const NGN_RATE = 1500;
+
+// Top 20 Gift Cards with placeholder rates
+const giftCards = [
+    {name:"Amazon",usd:0.95,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png"},
+    {name:"Apple / iTunes",usd:0.92,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo1RF1NAYs5PAp4f2RFMDxT_kyH1KaZCkmiA&s"},
+    {name:"Google Play",usd:0.93,img:"https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Logo.png"},
+    {name:"Steam",usd:0.94,img:"https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg"},
+    {name:"Xbox",usd:0.91,img:"https://upload.wikimedia.org/wikipedia/commons/4/43/Xbox_one_logo.svg"},
+    {name:"PlayStation",usd:0.92,img:"https://upload.wikimedia.org/wikipedia/commons/0/05/PlayStation_logo_colour.svg"},
+    {name:"Netflix",usd:0.90,img:"https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"},
+    {name:"Walmart",usd:0.89,img:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg"},
+    {name:"Roblox",usd:0.88,img:"https://upload.wikimedia.org/wikipedia/commons/8/84/Roblox_Logo_2022.svg"},
+    {name:"Spotify",usd:0.87,img:"https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"},
+    {name:"Nintendo",usd:0.86,img:"https://upload.wikimedia.org/wikipedia/commons/0/0d/Nintendo.svg"},
+    {name:"Starbucks",usd:0.85,img:"https://upload.wikimedia.org/wikipedia/commons/4/45/Starbucks_Corporation_Logo_2011.svg"},
+    {name:"eBay",usd:0.88,img:"https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg"},
+    {name:"Best Buy",usd:0.87,img:"https://upload.wikimedia.org/wikipedia/commons/a/a9/Best_Buy_Logo.svg"},
+    {name:"Target",usd:0.89,img:"https://upload.wikimedia.org/wikipedia/commons/9/9a/Target_logo.png"},
+    {name:"Sephora",usd:0.86,img:"https://upload.wikimedia.org/wikipedia/commons/8/87/Sephora_logo.svg"},
+    {name:"Uber",usd:0.88,img:"https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png"},
+    {name:"Airbnb",usd:0.90,img:"https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg"},
+    {name:"Disney+",usd:0.87,img:"https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg"},
+    {name:"Adidas",usd:0.85,img:"https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_logo.svg"}
+];
+
+// Crypto / payment
+const cryptoCards = [
+    {name:"Bitcoin",usd:27000,img:"https://cryptologos.cc/logos/bitcoin-btc-logo.png"},
+    {name:"Zelle",usd:1,img:"https://upload.wikimedia.org/wikipedia/commons/f/f0/Zelle_logo.png"},
+    {name:"CashApp",usd:1,img:"https://upload.wikimedia.org/wikipedia/commons/5/5f/Cash_App_logo.svg"},
+    {name:"PayPal",usd:1,img:"https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"}
+];
+
+function renderCards(containerId,data){
+    const container=document.getElementById(containerId);
+    container.innerHTML="";
+    data.forEach(item=>{
+        const div=document.createElement("div");
+        div.classList.add("card");
+        div.innerHTML=`
+            <img src="${item.img}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>USD Rate: $${item.usd.toFixed(2)}</p>
+            <p>₦ Rate: ₦${(item.usd*NGN_RATE).toLocaleString()}</p>
+            <button>Trade Now</button>
+        `;
+        container.appendChild(div);
+    });
+}
+
+renderCards("cards-container",giftCards);
+renderCards("crypto-container",cryptoCards);
+
+// Form handlers
+document.getElementById("trade-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Trade request submitted successfully!");
+    this.reset();
+});
+document.getElementById("withdraw-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Withdrawal request submitted successfully!");
+    this.reset();
+});
+</script>
+
+</body>
+</html>
